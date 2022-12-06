@@ -1,0 +1,47 @@
+<body class="container mt-5">
+    <div class="alert alert-info display-1 text-center">Listado de Profesores</div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% if profesor %}
+    <table class="table table-striped table-inverse table-reponsive">
+     <thead class="thear-inverse">
+        <tr>
+            <th>nombre</th>
+            <th>rut</th>
+            <th>edad</th>
+            <th>curso_asignado</th>
+            <th>fechaInicio</th>
+            <th>fechatermino</th>
+            <th>saldo</th>
+            
+        </tr>
+     </thead>
+     <tbody>
+        {% for  emp in profesor %}
+        <tr>
+            <td>{{emp.nombre}}</td>
+            <td>{{emp.rut}}</td>
+            <td>{{emp.edad}}</td>
+            <td>{{emp.curso_asignado}}</td>
+            <td>{{emp.fechaInicio}}</td>
+            <td>{{emp.fechatermino}}</td>
+            <td>{{emp.saldo}}</td>
+            
+            <td><a href="/elinarProfesores/{{emp.rut}}" class="btn btn-danger btn-sm">Eliminar<i class="bi bi-trash"></i></td>
+            <td><a href="/actualizarProfesor/{{emp.rut}}" class="btn btn-success btn-sm">Actualizar<i class="bi bi-penceil"></i></td>
+           
+        </tr>
+        {% endfor %}
+     </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>no se encuentran los trabajadores en el sistema</strong>
+    </div>
+    {% endif %}
+
+    <a href="../" class="btn btn-danger">volver</a>
+    <a href="../agregarProfesor" class="btn btn-info float-end">Agregar Profesores</a>
+
+
+
+</body>
